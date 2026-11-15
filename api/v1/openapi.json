@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OENEXA Validator Consensus Daemon API",
+    "version": "1.0.0",
+    "description": "Internal RPC API for validator signer status, health, and slashing guard status."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:9091",
+      "description": "Internal Sentry / Loopback Interface"
+    }
+  ],
+  "paths": {
+    "/v1/validator/status": {
+      "get": {
+        "summary": "Get Validator Signer Status",
+        "operationId": "getValidatorStatus",
+        "responses": {
+          "200": {
+            "description": "Validator status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidatorStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ValidatorStatusResponse": {
+        "type": "object",
+        "properties": {
+          "validatorAddress": { "type": "string" },
+          "votingPower": { "type": "string" },
+          "proposalsCount": { "type": "integer" },
+          "slashed": { "type": "boolean" },
+          "uptimePercent": { "type": "number" }
+        },
+        "required": ["validatorAddress", "votingPower", "slashed", "uptimePercent"]
+      }
+    }
+  }
+}

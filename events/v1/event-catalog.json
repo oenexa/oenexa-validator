@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "domain": "com.oenexa.validator",
+  "version": "1.0.0",
+  "events": [
+    {
+      "type": "com.oenexa.validator.block.signed.v1",
+      "description": "Emitted when a validator signs a proposed block header",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "data": {
+            "type": "object",
+            "properties": {
+              "blockHeight": { "type": "integer" },
+              "validatorAddress": { "type": "string" },
+              "signature": { "type": "string" }
+            },
+            "required": ["blockHeight", "validatorAddress", "signature"]
+          }
+        }
+      }
+    }
+  ]
+}
