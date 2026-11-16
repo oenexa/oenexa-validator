@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { createCloudEvent, type CloudEvent } from '@oenexa/event-schemas';
+import { createCloudEvent, type CloudEvent } from '../domain/events.js';
 import type { Validator, SlashingRecord, SlashingReason, ValidatorStatus } from '../domain/types.js';
 
 export class ValidatorService {
