@@ -1,11 +1,14 @@
 import http from 'node:http';
 import { ValidatorService } from './service/ValidatorService.js';
+import { ValidatorSlashingLedgerBridge } from './service/ValidatorSlashingLedgerBridge.js';
 
 export * from './domain/types.js';
 export * from './domain/events.js';
 export * from './service/ValidatorService.js';
+export * from './service/ValidatorSlashingLedgerBridge.js';
 
 const val = new ValidatorService();
+const slashingBridge = new ValidatorSlashingLedgerBridge();
 const PORT = Number(process.env.PORT) || 8088;
 
 export const server = http.createServer((req, res) => {
